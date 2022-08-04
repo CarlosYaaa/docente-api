@@ -24,13 +24,13 @@
 import { TipoUsuario } from '../enums/usuario.enum';
 import { Schema } from 'mongoose';
 export declare const UsuarioSchema: Schema<any, import("mongoose").Model<any, any, any, any, any>, {}, {}, any, {}, "type", {
+    email: string;
+    password: string;
     nombres: string;
     apellidoMaterno: string;
     apellidoPaterno: string;
-    nombreCompleto: string;
-    email: string;
-    password: string;
     tipoUsuario: TipoUsuario;
+    nombreCompleto: string;
     edad?: number;
     telefono?: number;
 }>;
