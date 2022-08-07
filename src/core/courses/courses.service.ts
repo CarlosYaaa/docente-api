@@ -17,12 +17,14 @@ export class CoursesService {
 
   async createCourse(usuario: UsuarioPayload, cursoRequest: CursosRequest) {
     try {
+      console.log("Usuario:", usuario)
       const cursoCreado = await this.courseModel.create({
         user: usuario._id,
         descripcion: cursoRequest.descripcion,
         day: cursoRequest.day,
         schedule: cursoRequest.scheduleHours,
       });
+      console.log("Que cosas se ha creado:", cursoCreado)
       if(!cursoCreado) {
         throw new NotFoundException({
           message: 'No se pudo crear el curso',
@@ -32,6 +34,7 @@ export class CoursesService {
         message: 'Curso creado satisfactoriamente',
       }
     } catch (error) {
+      console.log(error)
       ErrorUtil.handleError(error);
     }
   }

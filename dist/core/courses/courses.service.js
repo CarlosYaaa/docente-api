@@ -25,12 +25,14 @@ let CoursesService = class CoursesService {
     }
     async createCourse(usuario, cursoRequest) {
         try {
+            console.log("Usuario:", usuario);
             const cursoCreado = await this.courseModel.create({
                 user: usuario._id,
                 descripcion: cursoRequest.descripcion,
                 day: cursoRequest.day,
                 schedule: cursoRequest.scheduleHours,
             });
+            console.log("Que cosas se ha creado:", cursoCreado);
             if (!cursoCreado) {
                 throw new common_1.NotFoundException({
                     message: 'No se pudo crear el curso',
@@ -41,6 +43,7 @@ let CoursesService = class CoursesService {
             };
         }
         catch (error) {
+            console.log(error);
             error_utils_1.ErrorUtil.handleError(error);
         }
     }
